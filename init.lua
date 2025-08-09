@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -100,6 +100,8 @@ vim.g.have_nerd_font = false
 
 -- Make line numbers default
 vim.o.number = true
+vim.o.relativenumber = true
+
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
@@ -198,6 +200,12 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Line and selection moves (shamille added 08/06/25)
+vim.keymap.set('n', '<A-k>', ':m .+1<CR>==', { desc = 'move line down' })
+vim.keymap.set('n', '<A-j>', ':m .-2<CR>==', { desc = 'move line up' })
+vim.keymap.set('v', '<A-k>', ":m '>+1<CR>gv=gv", { desc = 'move selection down' })
+vim.keymap.set('v', '<A-j>', ":m '>-2<CR>gv=gv", { desc = 'move selection down' })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
